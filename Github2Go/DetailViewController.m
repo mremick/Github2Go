@@ -10,6 +10,7 @@
 
 @interface DetailViewController ()
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
 - (void)configureView;
 @end
 
@@ -34,9 +35,12 @@
 - (void)configureView
 {
     // Update the user interface for the detail item.
+    
+    NSLog(@"DETAIL: %@",self.detailItem);
 
     if (self.detailItem) {
-        self.detailDescriptionLabel.text = [self.detailItem description];
+        NSString *urlString = [_detailItem objectForKey:@"html_url"];
+        [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlString]]];
     }
 }
 

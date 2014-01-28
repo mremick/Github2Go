@@ -7,12 +7,14 @@
 //
 
 #import "MasterViewController.h"
-
 #import "DetailViewController.h"
+#import "NetworkController.h"
 
 @interface MasterViewController () {
     NSMutableArray *_objects;
 }
+
+@property (strong,nonatomic) NSArray *gitHubResponse;
 @end
 
 @implementation MasterViewController
@@ -35,6 +37,11 @@
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+    
+    self.gitHubResponse = [[NetworkController sharedController] reposForSearchString:@"iOS"];
+    
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -62,15 +69,17 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _objects.count;
+    return [self.gitHubResponse count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    
+    NSDictionary *repoDict = [self.gitHubResponse objectAtIndex:indexPath.row];
+    
 
-    NSDate *object = _objects[indexPath.row];
-    cell.textLabel.text = [object description];
+    cell.textLabel.text = [repoDict objectForKey:@"name"];
     return cell;
 }
 
@@ -109,17 +118,19 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        NSDate *object = _objects[indexPath.row];
-        self.detailViewController.detailItem = object;
+        NSDictionary *repoDict = [self.gitHubResponse objectAtIndex:indexPath.row];
+        self.detailViewController.detailItem = repoDict;
     }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"showDetail"]) {
+    if ([segue.identifier isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDate *object = _objects[indexPath.row];
-        [[segue destinationViewController] setDetailItem:object];
+        NSDictionary *dict = [self.gitHubResponse objectAtIndex:indexPath.row];
+        NSLog(@"dict: %@",dict);
+        DetailViewController *vc = (DetailViewController *)segue.destinationViewController;
+        vc.detailItem = dict; 
     }
 }
 
