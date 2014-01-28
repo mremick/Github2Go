@@ -12,6 +12,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "DetailViewController.h"
 #import "MBProgressHUD.h"
+#import "SearchUsersViewController.h"
 
 @interface SearchViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *searchBar;

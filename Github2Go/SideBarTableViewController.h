@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SideBarTableViewController : UITableViewController <UIGestureRecognizerDelegate>
+@interface SideBarTableViewController : UITableViewController <UIGestureRecognizerDelegate,UITableViewDelegate>
 
 @end

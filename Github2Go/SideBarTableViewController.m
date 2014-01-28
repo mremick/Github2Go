@@ -9,6 +9,7 @@
 #import "SideBarTableViewController.h"
 #import "SearchViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "SearchUsersViewController.h"
 
 @interface SideBarTableViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *imageView1;
@@ -16,9 +17,12 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageView3;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView4;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView5;
+@property (strong,nonatomic) NSArray *viewControllerArray;
 
 @property (strong,nonatomic) SearchViewController *searchVC;
+@property (strong,nonatomic) SearchUsersViewController *searchUsersVC;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong,nonatomic) UIViewController *topViewController;
 
 @end
 
@@ -44,7 +48,7 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    
+    self.tableView.delegate = self;
     
     UIColor *background = [UIColor blackColor];
 
@@ -70,8 +74,17 @@
     self.imageView5.layer.cornerRadius = 27;
     self.imageView5.image = [UIImage imageNamed:@"heart.png"];
     
+    self.tableView.scrollEnabled = NO;
+    
     //loading the table view
     self.searchVC = [self.storyboard instantiateViewControllerWithIdentifier:@"searchViewController"];
+    self.searchUsersVC = [self.storyboard instantiateViewControllerWithIdentifier:@"searchUsers"];
+    
+    self.topViewController = self.searchVC;
+    
+    self.viewControllerArray = [NSArray new];
+    self.viewControllerArray = @[self.searchVC,self.searchUsersVC];
+    
     
     //adding the view controller as a child view controller
     [self addChildViewController:self.searchVC];
@@ -98,7 +111,7 @@
     
     pan.delegate = self;
     
-    [self.searchVC.view addGestureRecognizer:pan];
+    [self.topViewController.view addGestureRecognizer:pan];
 }
 
 - (void)slidePanel:(id)sender
@@ -111,9 +124,9 @@
     NSLog(@"translation: %f",translation.x);
     
     if (pan.state == UIGestureRecognizerStateChanged) {
-        if (self.searchVC.view.frame.origin.x+ translation.x > 0) {
+        if (self.topViewController.view.frame.origin.x+ translation.x > 0) {
             //if the finger is moving left move the view with the finger
-            self.searchVC.view.center = CGPointMake(self.searchVC.view.center.x + translation.x, self.searchVC.view.center.y);
+            self.topViewController.view.center = CGPointMake(self.topViewController.view.center.x + translation.x, self.topViewController.view.center.y);
             
             [(UIPanGestureRecognizer *)sender setTranslation:CGPointMake(0,0) inView:self.view];
 
@@ -122,11 +135,11 @@
     
     if (pan.state == UIGestureRecognizerStateEnded) {
         //if the sliding view is past halfway of the locl it in place
-        if (self.searchVC.view.frame.origin.x > self.view.frame.size.width / 2) {
+        if (self.topViewController.view.frame.origin.x > self.view.frame.size.width / 2) {
             [self lockSideBar];
         }
         
-        if (self.searchVC.view.frame.origin.x < self.view.frame.size.width / 2) {
+        if (self.topViewController.view.frame.origin.x < self.view.frame.size.width / 2) {
             [UIView animateWithDuration:.4 animations:^{
                 //self.searchVC.view.frame = self.view.frame;
                 [self closeSideBar];
@@ -141,7 +154,7 @@
 {
     
     [UIView animateWithDuration:.4 delay:0.0 options:UIViewAnimationOptionCurveLinear animations:^{
-        self.searchVC.view.frame = CGRectMake(self.view.frame.size.width * .8, self.searchVC.view.frame.origin.y, self.searchVC.view.frame.size.width, self.searchVC.view.frame.size.height);
+        self.topViewController.view.frame = CGRectMake(self.view.frame.size.width * .8, self.topViewController.view.frame.origin.y, self.topViewController.view.frame.size.width, self.topViewController.view.frame.size.height);
     } completion:^(BOOL finished) {
         //
     }];
@@ -150,7 +163,8 @@
 - (void)closeSideBar
 {
     [UIView animateWithDuration:0.6 delay:0.0 usingSpringWithDamping:.5 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionOverrideInheritedDuration animations:^{
-        self.searchVC.view.frame = self.view.frame;
+        NSLog(@"self.y %f search y%f",self.view.frame.origin.y,self.topViewController.view.frame.origin.y);
+        self.topViewController.view.frame = self.view.bounds;
     } completion:^(BOOL finished) {
         //
     }];
@@ -164,6 +178,42 @@
 
 #pragma mark - Table view data source
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"index selected at: %ld",(long)indexPath.row);
+    
+    
+    UIViewController *newVC = [self.viewControllerArray objectAtIndex:indexPath.row];
+    
+    //adding the view controller as a child view controller
+    [self addChildViewController:newVC];
+    
+    //setting the frame of the new of the new view controller to the size of the view
+    newVC.view.frame = self.view.bounds;
+    
+    //adding the view
+    [self.view addSubview:newVC.view];
+    [newVC didMoveToParentViewController:newVC];
+    
+    //animate old view out
+    //animate new view in
+    [UIView animateWithDuration:.4 delay:0.0 options:UIViewAnimationOptionCurveLinear animations:^{
+        self.topViewController.view.frame = CGRectMake(self.view.frame.size.width, self.topViewController.view.frame.origin.y, self.topViewController.view.frame.size.width, self.topViewController.view.frame.size.height);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:.4 delay:0.0 options:UIViewAnimationOptionCurveLinear animations:^{
+            newVC.view.frame = self.view.bounds;
+        } completion:^(BOOL finished) {
+            NSLog(@"setup pan gesture on new view controller");
+            [self setupPanGesture];
+        }];
+    }];
+    
+    //remove child
+    [self.topViewController removeFromParentViewController];
+    
+    self.topViewController = newVC;
+
+}
 
 /*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
