@@ -1,10 +1,13 @@
 PODS:
   - MBProgressHUD (0.8)
+  - RAMCollectionViewFlemishBondLayout (1.1.1)
 
 DEPENDENCIES:
   - MBProgressHUD (~> 0.8)
+  - RAMCollectionViewFlemishBondLayout (~> 1.1.1)
 
 SPEC CHECKSUMS:
   MBProgressHUD: 2bbc6f470111daf7f3eaa4eb12b8cbf01c4c0622
+  RAMCollectionViewFlemishBondLayout: 7ac8a4ad57f18b36ea0abb0cc1c581e478b9f29d
 
 COCOAPODS: 0.29.0

@@ -20,6 +20,7 @@
 @property (strong,nonatomic) UIImage *avatar;
 @property (strong,nonatomic) NSString *avatarURL;
 @property (strong,nonatomic) NSNumber *githubScore;
+@property (strong,nonatomic) NSString *profileURL;
 
 @property (readwrite,nonatomic) BOOL isDownloading;
 

@@ -32,7 +32,7 @@
 {
     _avatarImageView = avatarImageView;
     _avatarImageView.layer.masksToBounds = YES;
-    _avatarImageView.layer.cornerRadius = 60; 
+    _avatarImageView.layer.cornerRadius = 58;
 }
 
 @end

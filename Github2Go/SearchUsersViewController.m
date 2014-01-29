@@ -9,6 +9,8 @@
 #import "SearchUsersViewController.h"
 #import "CollectionCell.h"
 #import "GithubUser.h"
+#import "DetailViewController.h"
+#import <RAMCollectionViewFlemishBondLayout.h>
 
 @interface SearchUsersViewController ()
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -16,6 +18,7 @@
 - (IBAction)searchButtonSelected:(UIButton *)sender;
 @property (strong,nonatomic) NSMutableArray *usersArray;
 @property (strong,nonatomic) GithubUser *userClass;
+@property (strong,nonatomic) NSArray *itemsFromResponseDictionary;
 
 @end
 
@@ -33,6 +36,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    //UICollectionViewLayout *collectionViewLayout = [[RAMCollectionViewFlemishBondLayout alloc] init];
+    //self.collectionView.collectionViewLayout = collectionViewLayout;
+    
+    
     self.usersArray = [NSMutableArray new];
 	// Do any additional setup after loading the view.
     self.collectionView.delegate = self;
@@ -79,10 +87,11 @@
     }
     
     cell.layer.masksToBounds = YES;
-    cell.layer.cornerRadius = 60; 
+    cell.layer.cornerRadius = 60; //60
     
     UIColor *cellBackgroundColor = [UIColor colorWithRed:0.049 green:0.216 blue:0.580 alpha:1.000];
     UIColor *ios7StandardBlue = [UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0];
+    
     
     cell.backgroundColor = ios7StandardBlue;
     
@@ -116,16 +125,20 @@
 {
     NSString *searchString = [NSString stringWithFormat:@"https://api.github.com/search/users?q=%@",searchTerm];
     
+    searchString = [searchString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
     NSError *error;
     
     NSData *searchData = [NSData dataWithContentsOfURL:[NSURL URLWithString:searchString]];
     
     NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:searchData options:NSJSONReadingMutableContainers error:&error];
     
-    NSArray *itemsFromResponseDictionary = [responseDictionary objectForKey:@"items"];
+    self.itemsFromResponseDictionary = [responseDictionary objectForKey:@"items"];
+    
+    NSLog(@"%@",self.itemsFromResponseDictionary);
     
     
-    [self createUsersFromGithubResponse:itemsFromResponseDictionary];
+    [self createUsersFromGithubResponse:self.itemsFromResponseDictionary];
     
 
 }
@@ -138,10 +151,23 @@
         user.username = [dictionary objectForKey:@"login"];
         user.githubScore = [dictionary objectForKey:@"score"];
         user.avatarURL = [dictionary objectForKey:@"avatar_url"];
+        user.profileURL = [dictionary objectForKey:@"html_url"];
+        
+        
         
         [self.usersArray addObject:user];
     }
         
     [self.collectionView reloadData];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"showProfile"]) {
+        NSIndexPath *indexPath = [[self.collectionView indexPathsForSelectedItems] lastObject];
+        NSDictionary *dict = [self.itemsFromResponseDictionary objectAtIndex:indexPath.row];
+        DetailViewController *vc = (DetailViewController *)segue.destinationViewController;
+        vc.detailItem = dict;
+    }
 }
 @end

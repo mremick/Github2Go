@@ -255,7 +255,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gpY-PB-LnG">
-                                                    <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                                    <rect key="frame" x="2" y="2" width="116" height="116"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Crv-f7-K1Y">
@@ -275,10 +275,12 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <size key="customSize" width="120" height="120"/>
                                         <connections>
                                             <outlet property="avatarImageView" destination="gpY-PB-LnG" id="J5c-uU-HdQ"/>
                                             <outlet property="nameLabel" destination="Crv-f7-K1Y" id="ldH-Jd-chP"/>
                                             <outlet property="scoreLabel" destination="w89-tH-TSn" id="eya-PB-PXh"/>
+                                            <segue destination="Ah7-4n-0Wa" kind="push" identifier="showProfile" id="pYp-5U-knV"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="1C0-Ti-ole">
@@ -409,4 +411,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="pYp-5U-knV"/>
+    </inferredMetricsTieBreakers>
 </document>

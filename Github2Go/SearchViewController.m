@@ -105,7 +105,7 @@
         NSDictionary *dict = [self.searchResults objectAtIndex:indexPath.row];
         NSLog(@"dict: %@",dict);
         DetailViewController *vc = (DetailViewController *)segue.destinationViewController;
-        vc.detailItem = dict;
+        vc.detailItem = [dict objectForKey:@"html_url"];
     }
 }
 @end
