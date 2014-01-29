@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *searchBar;
 - (IBAction)searchButtonSelected:(UIButton *)sender;
 @property (strong,nonatomic) NSMutableArray *usersArray;
+@property (strong,nonatomic) GithubUser *userClass;
 
 @end
 
@@ -36,6 +37,12 @@
 	// Do any additional setup after loading the view.
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
+    
+    self.userClass = [[GithubUser alloc] init];
+    self.userClass.delegate = self;
+    
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -51,6 +58,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     CollectionCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
     
     GithubUser *user = [self.usersArray objectAtIndex:indexPath.row];
@@ -66,7 +74,7 @@
     
     else {
         if (!user.isDownloading) {
-            [user downloadUserAvatar];
+            [user downloadUserAvatar:indexPath];
         }
     }
     
@@ -81,6 +89,16 @@
     return cell; 
     
 }
+
+- (void)imageWasDownloaded:(NSIndexPath *)indexPath
+{
+    NSLog(@"collection view reloaded at index %ld",(long)indexPath.row);
+    
+    [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
+    
+}
+ 
+
 
 - (IBAction)searchButtonSelected:(UIButton *)sender {
     
@@ -116,15 +134,14 @@
 {
     for (NSDictionary *dictionary in responseArray) {
         GithubUser *user = [GithubUser new];
+        user.delegate = self;
         user.username = [dictionary objectForKey:@"login"];
         user.githubScore = [dictionary objectForKey:@"score"];
         user.avatarURL = [dictionary objectForKey:@"avatar_url"];
         
         [self.usersArray addObject:user];
     }
-    
-    NSLog(@"USERS ARRAY: %@",self.usersArray);
-    
+        
     [self.collectionView reloadData];
 }
 @end

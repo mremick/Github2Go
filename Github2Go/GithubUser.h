@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol GitHubUserDelegate <NSObject>
+
+- (void)imageWasDownloaded:(NSIndexPath *)indexPath;
+
+@end
+
 @interface GithubUser : NSObject
 
 @property (strong,nonatomic) NSString *username;
@@ -17,7 +23,11 @@
 
 @property (readwrite,nonatomic) BOOL isDownloading;
 
-- (void)downloadUserAvatar;
+@property (unsafe_unretained) id<GitHubUserDelegate> delegate;
+
+
+- (void)downloadUserAvatar:(NSIndexPath *)indexPath;
+
 
 
 @end

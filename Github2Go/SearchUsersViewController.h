@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GithubUser.h"
 
-@interface SearchUsersViewController : UIViewController <UICollectionViewDataSource,UICollectionViewDelegate>
+@interface SearchUsersViewController : UIViewController <UICollectionViewDataSource,UICollectionViewDelegate,GitHubUserDelegate>
 
 @end
