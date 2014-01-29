@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		3E251DC518976A680021EC7E /* green_blue_minimalistic_gaussian_blur_blurred_1440x900_21100.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3E251DC418976A680021EC7E /* green_blue_minimalistic_gaussian_blur_blurred_1440x900_21100.jpg */; };
 		3E251E0F1898561D0021EC7E /* SearchUsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E251E0E1898561D0021EC7E /* SearchUsersViewController.m */; };
+		3E251E121898651F0021EC7E /* CollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E251E111898651F0021EC7E /* CollectionCell.m */; };
+		3E251E151898709A0021EC7E /* GithubUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E251E141898709A0021EC7E /* GithubUser.m */; };
+		3E251E1C189882080021EC7E /* BurgerButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E251E1A189882080021EC7E /* BurgerButton.png */; };
+		3E251E1D189882080021EC7E /* BurgerButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E251E1B189882080021EC7E /* BurgerButton@2x.png */; };
+		3E251E1F189888160021EC7E /* sBsvBbjY.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E251E1E189888160021EC7E /* sBsvBbjY.png */; };
 		3E459A6D189709B2007D75AE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E459A6C189709B2007D75AE /* Foundation.framework */; };
 		3E459A6F189709B2007D75AE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E459A6E189709B2007D75AE /* CoreGraphics.framework */; };
 		3E459A71189709B2007D75AE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E459A70189709B2007D75AE /* UIKit.framework */; };
@@ -52,6 +57,13 @@
 		3E251DC418976A680021EC7E /* green_blue_minimalistic_gaussian_blur_blurred_1440x900_21100.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = green_blue_minimalistic_gaussian_blur_blurred_1440x900_21100.jpg; sourceTree = "<group>"; };
 		3E251E0D1898561D0021EC7E /* SearchUsersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchUsersViewController.h; sourceTree = "<group>"; };
 		3E251E0E1898561D0021EC7E /* SearchUsersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchUsersViewController.m; sourceTree = "<group>"; };
+		3E251E101898651F0021EC7E /* CollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionCell.h; sourceTree = "<group>"; };
+		3E251E111898651F0021EC7E /* CollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionCell.m; sourceTree = "<group>"; };
+		3E251E131898709A0021EC7E /* GithubUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GithubUser.h; sourceTree = "<group>"; };
+		3E251E141898709A0021EC7E /* GithubUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GithubUser.m; sourceTree = "<group>"; };
+		3E251E1A189882080021EC7E /* BurgerButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BurgerButton.png; sourceTree = "<group>"; };
+		3E251E1B189882080021EC7E /* BurgerButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BurgerButton@2x.png"; sourceTree = "<group>"; };
+		3E251E1E189888160021EC7E /* sBsvBbjY.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sBsvBbjY.png; sourceTree = "<group>"; };
 		3E459A69189709B2007D75AE /* Github2Go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Github2Go.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E459A6C189709B2007D75AE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3E459A6E189709B2007D75AE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -163,6 +175,10 @@
 				3E459AAE1897319A007D75AE /* SideBarTableViewController.m */,
 				3E251E0D1898561D0021EC7E /* SearchUsersViewController.h */,
 				3E251E0E1898561D0021EC7E /* SearchUsersViewController.m */,
+				3E251E101898651F0021EC7E /* CollectionCell.h */,
+				3E251E111898651F0021EC7E /* CollectionCell.m */,
+				3E251E131898709A0021EC7E /* GithubUser.h */,
+				3E251E141898709A0021EC7E /* GithubUser.m */,
 				3E459A8A189709B2007D75AE /* Images.xcassets */,
 				3E459A73189709B2007D75AE /* Supporting Files */,
 			);
@@ -174,7 +190,10 @@
 			children = (
 				3E459A74189709B2007D75AE /* Github2Go-Info.plist */,
 				3E459A75189709B2007D75AE /* InfoPlist.strings */,
+				3E251E1A189882080021EC7E /* BurgerButton.png */,
+				3E251E1B189882080021EC7E /* BurgerButton@2x.png */,
 				3E459ABA18976377007D75AE /* mail.png */,
+				3E251E1E189888160021EC7E /* sBsvBbjY.png */,
 				3E459ABB18976377007D75AE /* cloud.png */,
 				3E459ABC18976377007D75AE /* heart.png */,
 				3E459AC2189763D4007D75AE /* search.png */,
@@ -288,10 +307,13 @@
 				3E459AC118976377007D75AE /* friends.png in Resources */,
 				3E459ABE18976377007D75AE /* mail.png in Resources */,
 				3E459A8B189709B2007D75AE /* Images.xcassets in Resources */,
+				3E251E1C189882080021EC7E /* BurgerButton.png in Resources */,
+				3E251E1F189888160021EC7E /* sBsvBbjY.png in Resources */,
 				3E459ABF18976377007D75AE /* cloud.png in Resources */,
 				3E459AC018976377007D75AE /* heart.png in Resources */,
 				3E459A80189709B2007D75AE /* Main_iPhone.storyboard in Resources */,
 				3E459A77189709B2007D75AE /* InfoPlist.strings in Resources */,
+				3E251E1D189882080021EC7E /* BurgerButton@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,6 +368,8 @@
 				3E459A7D189709B2007D75AE /* AppDelegate.m in Sources */,
 				3E459A86189709B2007D75AE /* MasterViewController.m in Sources */,
 				3E459AAC1897169F007D75AE /* SearchViewController.m in Sources */,
+				3E251E151898709A0021EC7E /* GithubUser.m in Sources */,
+				3E251E121898651F0021EC7E /* CollectionCell.m in Sources */,
 				3E459A79189709B2007D75AE /* main.m in Sources */,
 				3E459AAF1897319A007D75AE /* SideBarTableViewController.m in Sources */,
 				3E251E0F1898561D0021EC7E /* SearchUsersViewController.m in Sources */,

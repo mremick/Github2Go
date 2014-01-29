@@ -12,6 +12,7 @@
 #import "SearchUsersViewController.h"
 
 @interface SideBarTableViewController ()
+- (IBAction)burgerButtonSelected:(id)sender;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView1;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView2;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView3;
@@ -40,6 +41,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    UIImageView *icon = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 2 - 23, 15, 45, 45)];
+    icon.image = [UIImage imageNamed:@"sBsvBbjY.png"];
+    [self.navigationController.view addSubview:icon];
     
 
     // Uncomment the following line to preserve selection between presentations.
@@ -209,6 +214,7 @@
     }];
     
     //remove child
+    [self.topViewController.view removeFromSuperview];
     [self.topViewController removeFromParentViewController];
     
     self.topViewController = newVC;
@@ -279,4 +285,10 @@
 
  */
 
+- (IBAction)burgerButtonSelected:(id)sender {
+    
+    NSLog(@"BURGER BUTTON");
+    
+    
+}
 @end
