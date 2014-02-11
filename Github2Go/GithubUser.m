@@ -24,19 +24,22 @@
     return self;
 }
 
-- (void)downloadUserAvatar:(NSIndexPath *)indexPath
+- (void)downloadUserAvatar:(NSIndexPath *)indexPath andCompletion:(void(^)( UIImage *pic))callback
 {
     
     _isDownloading = YES;
     
     [self.backgroundQueue addOperationWithBlock:^{
         NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:_avatarURL]];
-        _avatar = [UIImage imageWithData:imageData];
+        UIImage *downloadedImage = [UIImage imageWithData:imageData];
         
-        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-            [self.delegate imageWasDownloaded:indexPath];
-        }];
+        _avatar = downloadedImage;
+        
+        callback(downloadedImage);
+        
     }];
+    
+    
 }
 
 @end

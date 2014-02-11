@@ -14,6 +14,7 @@
 		3E251E1C189882080021EC7E /* BurgerButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E251E1A189882080021EC7E /* BurgerButton.png */; };
 		3E251E1D189882080021EC7E /* BurgerButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E251E1B189882080021EC7E /* BurgerButton@2x.png */; };
 		3E251E1F189888160021EC7E /* sBsvBbjY.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E251E1E189888160021EC7E /* sBsvBbjY.png */; };
+		3E251E281899BD680021EC7E /* iPadRepoSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E251E271899BD680021EC7E /* iPadRepoSearchViewController.m */; };
 		3E459A6D189709B2007D75AE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E459A6C189709B2007D75AE /* Foundation.framework */; };
 		3E459A6F189709B2007D75AE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E459A6E189709B2007D75AE /* CoreGraphics.framework */; };
 		3E459A71189709B2007D75AE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E459A70189709B2007D75AE /* UIKit.framework */; };
@@ -21,7 +22,6 @@
 		3E459A79189709B2007D75AE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E459A78189709B2007D75AE /* main.m */; };
 		3E459A7D189709B2007D75AE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E459A7C189709B2007D75AE /* AppDelegate.m */; };
 		3E459A80189709B2007D75AE /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E459A7E189709B2007D75AE /* Main_iPhone.storyboard */; };
-		3E459A83189709B2007D75AE /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E459A81189709B2007D75AE /* Main_iPad.storyboard */; };
 		3E459A86189709B2007D75AE /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E459A85189709B2007D75AE /* MasterViewController.m */; };
 		3E459A89189709B2007D75AE /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E459A88189709B2007D75AE /* DetailViewController.m */; };
 		3E459A8B189709B2007D75AE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E459A8A189709B2007D75AE /* Images.xcassets */; };
@@ -38,6 +38,11 @@
 		3E459AC018976377007D75AE /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E459ABC18976377007D75AE /* heart.png */; };
 		3E459AC118976377007D75AE /* friends.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E459ABD18976377007D75AE /* friends.png */; };
 		3E459AC3189763D4007D75AE /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E459AC2189763D4007D75AE /* search.png */; };
+		3E4ABB3B18AA99AF009F5752 /* Github2Go.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3E4ABB3918AA99AF009F5752 /* Github2Go.xcdatamodeld */; };
+		3E4ABB3D18AA9AA2009F5752 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4ABB3C18AA9AA2009F5752 /* CoreData.framework */; };
+		3E4ABB4018AA9C52009F5752 /* Repo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4ABB3F18AA9C52009F5752 /* Repo.m */; };
+		3EA419381899DD2A003E47DF /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EA419371899DD2A003E47DF /* Main_iPad.storyboard */; };
+		3EA4193B1899DDB4003E47DF /* iPadSideBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA4193A1899DDB4003E47DF /* iPadSideBarViewController.m */; };
 		EDF5468AFE8948D9B86BB0CF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A0CF6A9638D4960AE1ABD61 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +69,8 @@
 		3E251E1A189882080021EC7E /* BurgerButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BurgerButton.png; sourceTree = "<group>"; };
 		3E251E1B189882080021EC7E /* BurgerButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BurgerButton@2x.png"; sourceTree = "<group>"; };
 		3E251E1E189888160021EC7E /* sBsvBbjY.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sBsvBbjY.png; sourceTree = "<group>"; };
+		3E251E261899BD680021EC7E /* iPadRepoSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iPadRepoSearchViewController.h; sourceTree = "<group>"; };
+		3E251E271899BD680021EC7E /* iPadRepoSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iPadRepoSearchViewController.m; sourceTree = "<group>"; };
 		3E459A69189709B2007D75AE /* Github2Go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Github2Go.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E459A6C189709B2007D75AE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3E459A6E189709B2007D75AE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -75,7 +82,6 @@
 		3E459A7B189709B2007D75AE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3E459A7C189709B2007D75AE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		3E459A7F189709B2007D75AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
-		3E459A82189709B2007D75AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		3E459A84189709B2007D75AE /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
 		3E459A85189709B2007D75AE /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
 		3E459A87189709B2007D75AE /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
@@ -97,6 +103,13 @@
 		3E459ABC18976377007D75AE /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
 		3E459ABD18976377007D75AE /* friends.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = friends.png; sourceTree = "<group>"; };
 		3E459AC2189763D4007D75AE /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
+		3E4ABB3A18AA99AF009F5752 /* Github2Go.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Github2Go.xcdatamodel; sourceTree = "<group>"; };
+		3E4ABB3C18AA9AA2009F5752 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		3E4ABB3E18AA9C52009F5752 /* Repo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Repo.h; sourceTree = "<group>"; };
+		3E4ABB3F18AA9C52009F5752 /* Repo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Repo.m; sourceTree = "<group>"; };
+		3EA419371899DD2A003E47DF /* Main_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPad.storyboard; sourceTree = "<group>"; };
+		3EA419391899DDB4003E47DF /* iPadSideBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iPadSideBarViewController.h; sourceTree = "<group>"; };
+		3EA4193A1899DDB4003E47DF /* iPadSideBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iPadSideBarViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E4ABB3D18AA9AA2009F5752 /* CoreData.framework in Frameworks */,
 				3E459A6F189709B2007D75AE /* CoreGraphics.framework in Frameworks */,
 				3E459A71189709B2007D75AE /* UIKit.framework in Frameworks */,
 				3E459A6D189709B2007D75AE /* Foundation.framework in Frameworks */,
@@ -147,6 +161,7 @@
 		3E459A6B189709B2007D75AE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3E4ABB3C18AA9AA2009F5752 /* CoreData.framework */,
 				3E459A6C189709B2007D75AE /* Foundation.framework */,
 				3E459A6E189709B2007D75AE /* CoreGraphics.framework */,
 				3E459A70189709B2007D75AE /* UIKit.framework */,
@@ -162,23 +177,29 @@
 				3E459A7B189709B2007D75AE /* AppDelegate.h */,
 				3E459A7C189709B2007D75AE /* AppDelegate.m */,
 				3E459A7E189709B2007D75AE /* Main_iPhone.storyboard */,
-				3E459A81189709B2007D75AE /* Main_iPad.storyboard */,
+				3EA419371899DD2A003E47DF /* Main_iPad.storyboard */,
 				3E459A84189709B2007D75AE /* MasterViewController.h */,
 				3E459A85189709B2007D75AE /* MasterViewController.m */,
 				3E459A87189709B2007D75AE /* DetailViewController.h */,
 				3E459A88189709B2007D75AE /* DetailViewController.m */,
+				3EA419391899DDB4003E47DF /* iPadSideBarViewController.h */,
+				3EA4193A1899DDB4003E47DF /* iPadSideBarViewController.m */,
 				3E459AA7189709CC007D75AE /* NetworkController.h */,
 				3E459AA8189709CC007D75AE /* NetworkController.m */,
 				3E459AAA1897169F007D75AE /* SearchViewController.h */,
 				3E459AAB1897169F007D75AE /* SearchViewController.m */,
 				3E459AAD1897319A007D75AE /* SideBarTableViewController.h */,
 				3E459AAE1897319A007D75AE /* SideBarTableViewController.m */,
+				3E251E261899BD680021EC7E /* iPadRepoSearchViewController.h */,
+				3E251E271899BD680021EC7E /* iPadRepoSearchViewController.m */,
 				3E251E0D1898561D0021EC7E /* SearchUsersViewController.h */,
 				3E251E0E1898561D0021EC7E /* SearchUsersViewController.m */,
 				3E251E101898651F0021EC7E /* CollectionCell.h */,
 				3E251E111898651F0021EC7E /* CollectionCell.m */,
 				3E251E131898709A0021EC7E /* GithubUser.h */,
 				3E251E141898709A0021EC7E /* GithubUser.m */,
+				3E4ABB3E18AA9C52009F5752 /* Repo.h */,
+				3E4ABB3F18AA9C52009F5752 /* Repo.m */,
 				3E459A8A189709B2007D75AE /* Images.xcassets */,
 				3E459A73189709B2007D75AE /* Supporting Files */,
 			);
@@ -201,6 +222,7 @@
 				3E459A78189709B2007D75AE /* main.m */,
 				3E251DC418976A680021EC7E /* green_blue_minimalistic_gaussian_blur_blurred_1440x900_21100.jpg */,
 				3E459A7A189709B2007D75AE /* Github2Go-Prefix.pch */,
+				3E4ABB3918AA99AF009F5752 /* Github2Go.xcdatamodeld */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -302,7 +324,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E251DC518976A680021EC7E /* green_blue_minimalistic_gaussian_blur_blurred_1440x900_21100.jpg in Resources */,
-				3E459A83189709B2007D75AE /* Main_iPad.storyboard in Resources */,
 				3E459AC3189763D4007D75AE /* search.png in Resources */,
 				3E459AC118976377007D75AE /* friends.png in Resources */,
 				3E459ABE18976377007D75AE /* mail.png in Resources */,
@@ -313,6 +334,7 @@
 				3E459AC018976377007D75AE /* heart.png in Resources */,
 				3E459A80189709B2007D75AE /* Main_iPhone.storyboard in Resources */,
 				3E459A77189709B2007D75AE /* InfoPlist.strings in Resources */,
+				3EA419381899DD2A003E47DF /* Main_iPad.storyboard in Resources */,
 				3E251E1D189882080021EC7E /* BurgerButton@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -370,9 +392,13 @@
 				3E459AAC1897169F007D75AE /* SearchViewController.m in Sources */,
 				3E251E151898709A0021EC7E /* GithubUser.m in Sources */,
 				3E251E121898651F0021EC7E /* CollectionCell.m in Sources */,
+				3E4ABB3B18AA99AF009F5752 /* Github2Go.xcdatamodeld in Sources */,
 				3E459A79189709B2007D75AE /* main.m in Sources */,
+				3E4ABB4018AA9C52009F5752 /* Repo.m in Sources */,
 				3E459AAF1897319A007D75AE /* SideBarTableViewController.m in Sources */,
+				3E251E281899BD680021EC7E /* iPadRepoSearchViewController.m in Sources */,
 				3E251E0F1898561D0021EC7E /* SearchUsersViewController.m in Sources */,
+				3EA4193B1899DDB4003E47DF /* iPadSideBarViewController.m in Sources */,
 				3E459A89189709B2007D75AE /* DetailViewController.m in Sources */,
 				3E459AA9189709CC007D75AE /* NetworkController.m in Sources */,
 			);
@@ -411,14 +437,6 @@
 				3E459A7F189709B2007D75AE /* Base */,
 			);
 			name = Main_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		3E459A81189709B2007D75AE /* Main_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3E459A82189709B2007D75AE /* Base */,
-			);
-			name = Main_iPad.storyboard;
 			sourceTree = "<group>";
 		};
 		3E459A9A189709B2007D75AE /* InfoPlist.strings */ = {
@@ -607,6 +625,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		3E4ABB3918AA99AF009F5752 /* Github2Go.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				3E4ABB3A18AA99AF009F5752 /* Github2Go.xcdatamodel */,
+			);
+			currentVersion = 3E4ABB3A18AA99AF009F5752 /* Github2Go.xcdatamodel */;
+			path = Github2Go.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 3E459A61189709B2007D75AE /* Project object */;
 }

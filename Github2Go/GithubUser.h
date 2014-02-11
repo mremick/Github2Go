@@ -27,8 +27,7 @@
 @property (unsafe_unretained) id<GitHubUserDelegate> delegate;
 
 
-- (void)downloadUserAvatar:(NSIndexPath *)indexPath;
-
+- (void)downloadUserAvatar:(NSIndexPath *)indexPath andCompletion:(void(^)( UIImage *pic))callback;
 
 
 @end

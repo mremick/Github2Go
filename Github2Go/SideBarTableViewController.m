@@ -24,6 +24,9 @@
 @property (strong,nonatomic) SearchUsersViewController *searchUsersVC;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong,nonatomic) UIViewController *topViewController;
+@property (strong,nonatomic) UIImageView *icon;
+@property (nonatomic) BOOL animate;
+@property (nonatomic) CGPoint centerXY;
 
 @end
 
@@ -42,9 +45,15 @@
 {
     [super viewDidLoad];
     
-    UIImageView *icon = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 2 - 23, 15, 45, 45)];
-    icon.image = [UIImage imageNamed:@"sBsvBbjY.png"];
-    [self.navigationController.view addSubview:icon];
+    CGFloat viewCenter = self.view.center.x;
+    self.centerXY = CGPointMake(viewCenter, 39);
+
+    
+    self.icon = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 45, 45)];
+    //icon.frame = CGRectMake(viewCenter - 10.0f, 15, 45, 45);
+    self.icon.center = self.centerXY;
+    self.icon.image = [UIImage imageNamed:@"sBsvBbjY.png"];
+    [self.navigationController.view addSubview:self.icon];
     
 
     // Uncomment the following line to preserve selection between presentations.
@@ -54,6 +63,9 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     self.tableView.delegate = self;
+    
+    self.animate = YES;
+    [self rotateLabelDown];
     
     UIColor *background = [UIColor blackColor];
 
@@ -126,8 +138,6 @@
     CGPoint velocity = [pan velocityInView:self.view];
     CGPoint translation = [pan translationInView:self.view];
     
-    NSLog(@"translation: %f",translation.x);
-    
     if (pan.state == UIGestureRecognizerStateChanged) {
         if (self.topViewController.view.frame.origin.x+ translation.x > 0) {
             //if the finger is moving left move the view with the finger
@@ -194,7 +204,7 @@
     [self addChildViewController:newVC];
     
     //setting the frame of the new of the new view controller to the size of the view
-    newVC.view.frame = self.view.bounds;
+    //newVC.view.frame = self.view.bounds;
     
     //adding the view
     [self.view addSubview:newVC.view];
@@ -289,6 +299,57 @@
     
     NSLog(@"BURGER BUTTON");
     
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
     
 }
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    CGFloat viewCenter = self.view.center.x;
+    self.centerXY = CGPointMake(viewCenter, 39);
+    self.icon.center = self.centerXY;
+}
+
+-(void)rotateLabelDown
+{
+    [UIView animateWithDuration:0.5
+                     animations:^{
+                         self.icon.transform = CGAffineTransformMakeRotation(M_PI);
+                     }
+                     completion:^(BOOL finished){
+                         [self rotateLabeALittleDown];
+                     }];
+}
+
+-(void)rotateLabeALittleDown
+{
+    [UIView animateWithDuration:0.5
+                     animations:^{
+                         self.icon.transform = CGAffineTransformMakeRotation(3.13-3);
+                     }
+                     completion:^(BOOL finished){
+                         
+                         if (self.animate) {
+                             [self rotateLabelMore];
+                         }
+                     }];
+}
+
+-(void)rotateLabelMore
+{
+    [UIView animateWithDuration:0.5
+                     animations:^{
+                         self.icon.transform = CGAffineTransformMakeRotation(3.13+3.14);
+                     }
+                     completion:^(BOOL finished){
+                         
+                         if (self.animate) {
+                             [self rotateLabelDown];
+                         }
+                     }];
+}
+
 @end

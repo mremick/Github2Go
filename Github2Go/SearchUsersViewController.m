@@ -82,14 +82,17 @@
     
     else {
         if (!user.isDownloading) {
-            [user downloadUserAvatar:indexPath];
+            [user downloadUserAvatar:indexPath andCompletion:^(UIImage *pic) {
+                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                    cell.avatarImageView.image = pic;
+                }];
+            }];
         }
     }
     
     cell.layer.masksToBounds = YES;
-    cell.layer.cornerRadius = 60; //60
+    cell.layer.cornerRadius = 60;
     
-    UIColor *cellBackgroundColor = [UIColor colorWithRed:0.049 green:0.216 blue:0.580 alpha:1.000];
     UIColor *ios7StandardBlue = [UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0];
     
     
@@ -118,6 +121,8 @@
     [self searchForUsers:self.searchBar.text];
     self.searchBar.text = @"";
     [self.searchBar resignFirstResponder];
+    
+    //reload collection ciew 
     
 }
 
@@ -170,4 +175,22 @@
         vc.detailItem = dict;
     }
 }
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    //self.view.frame = self.parentViewController.view.frame;
+    self.view.frame = self.parentViewController.view.bounds;
+
+    NSLog(@"will rotate");
+
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    NSLog(@"did rotate");
+    self.view.frame = self.parentViewController.view.bounds;
+
+}
+
+
 @end

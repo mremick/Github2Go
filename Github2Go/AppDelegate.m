@@ -7,8 +7,18 @@
 //
 
 #import "AppDelegate.h"
+#import "SearchViewController.h"
+
+
+
+
+
 
 @implementation AppDelegate
+
+@synthesize managedObjectContext = _managedObjectContext;
+@synthesize manangedObjectModel = _manangedObjectModel;
+@synthesize persistantStoreCoordinator = _persistantStoreCoordinator;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -45,7 +55,76 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:
+    [self saveContext];
 }
 
+
+- (void)saveContext
+{
+    //if the managed object changed, save, if error, log it
+    NSManagedObjectContext *context = self.managedObjectContext;
+    if (context && [context hasChanges]) {
+        NSError *error;
+        [context save:&error];
+        if (error) {
+            NSLog(@"ERROR SAVING %@",error);
+        }
+    }
+}
+
+- (NSURL *)applicationDocumentsDirectory
+{
+    return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+}
+
+- (NSManagedObjectContext *)managedObjectContext
+{
+    if (_managedObjectContext != nil) {
+        return _managedObjectContext;
+    }
+    
+    
+    NSPersistentStoreCoordinator *coordinator = [self persistantStoreCoordinator];
+    if (coordinator != nil) {
+        _managedObjectContext = [[NSManagedObjectContext alloc] init];
+        [_managedObjectContext setPersistentStoreCoordinator:coordinator];
+    }
+    
+    return _managedObjectContext;
+
+}
+
+- (NSPersistentStoreCoordinator *)persistantStoreCoordinator
+{
+    if (_persistantStoreCoordinator != nil) {
+        return _persistantStoreCoordinator;
+    }
+    
+    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"Github2Go.sqlite"];
+    
+    NSError *error = nil;
+    
+    _persistantStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self manangedObjectModel]];
+    
+    if (![_persistantStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
+        if (error) {
+            NSLog(@"ERROR: %@",error);
+        }
+        
+    }
+    
+    return _persistantStoreCoordinator;
+}
+
+- (NSManagedObjectModel *)manangedObjectModel
+{
+    if (_manangedObjectModel != nil) {
+        return _manangedObjectModel;
+    }
+    
+    NSURL *modeURL = [[NSBundle mainBundle] URLForResource:@"Github2Go" withExtension:@"momd"];
+    _manangedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modeURL];
+    return _manangedObjectModel; 
+}
 @end

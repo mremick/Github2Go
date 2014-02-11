@@ -7,6 +7,7 @@
 //
 
 #import "DetailViewController.h"
+#import "Repo.h"
 
 @interface DetailViewController ()
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
@@ -39,7 +40,7 @@
     NSLog(@"DETAIL: %@",self.detailItem);
 
     if (self.detailItem) {
-        NSString *urlString = [_detailItem objectForKey:@"html_url"];
+        NSString *urlString = [self.detailItem html_url];
         [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlString]]];
     }
 }
